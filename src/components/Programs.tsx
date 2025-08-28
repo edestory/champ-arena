@@ -1,8 +1,9 @@
 import { ArrowRight, Clock, Users, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import footballImage from '@/assets/football-kids.jpg';
-import basketballImage from '@/assets/basketball-kids.jpg';
-import tennisImage from '@/assets/tennis-kids.jpg';
+// Временные изображения для демонстрации
+const footballImage = "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&h=400&fit=crop";
+const basketballImage = "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop";
+const tennisImage = "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop";
 
 const Programs = () => {
   const programs = [

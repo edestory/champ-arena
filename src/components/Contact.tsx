@@ -6,7 +6,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import winnersImage from '@/assets/winners-kids.jpg';
+// Временное изображение для демонстрации
+const winnersImage = "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600&h=600&fit=crop";
 
 const Contact = () => {
   const [formData, setFormData] = useState({

@@ -14,11 +14,7 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage} 
-          alt="Современный спортивный зал" 
-          className="w-full h-full object-cover"
-        />
+        <div className="w-full h-full bg-gradient-to-br from-primary via-secondary to-accent"></div>
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
 

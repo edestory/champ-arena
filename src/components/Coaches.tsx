@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Award, Users, Calendar } from 'lucide-react';
-import aleksandrImage from '@/assets/coach-aleksandr.jpg';
-import mariaImage from '@/assets/coach-maria.jpg';
-import dmitriyImage from '@/assets/coach-dmitriy.jpg';
+// Временные изображения для демонстрации
+const aleksandrImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face";
+const mariaImage = "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=500&fit=crop&crop=face";
+const dmitriyImage = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face";
 
 const Coaches = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
