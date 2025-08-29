@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Search, ShoppingCart, Menu, X, Phone, Mail, Instagram, MessageCircle, Youtube, ChevronDown } from 'lucide-react';
+import { Search, ShoppingCart, Menu, X, Phone, Mail, Instagram, MessageCircle, Youtube, ChevronDown, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const { language, setLanguage, t } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -15,49 +17,49 @@ const Header = () => {
   };
 
   const navigationItems = [
-    { name: 'HOME', href: '#home' },
+    { name: t('header.nav.home'), href: '#home' },
     { 
-      name: 'PROGRAMS', 
+      name: t('header.nav.programs'), 
       href: '#programs',
       dropdown: [
-        { name: 'Boxing Training', href: '#boxing' },
-        { name: 'Wrestling Classes', href: '#wrestling' },
-        { name: 'Kids Programs (6-12)', href: '#kids' },
-        { name: 'Teen Programs (13-17)', href: '#teens' },
-        { name: 'Adult Programs (18+)', href: '#adults' }
+        { name: t('dropdown.programs.boxing'), href: '#boxing' },
+        { name: t('dropdown.programs.wrestling'), href: '#wrestling' },
+        { name: t('dropdown.programs.kids'), href: '#kids' },
+        { name: t('dropdown.programs.teens'), href: '#teens' },
+        { name: t('dropdown.programs.adults'), href: '#adults' }
       ]
     },
     { 
-      name: 'COACHES', 
+      name: t('header.nav.coaches'), 
       href: '#coaches',
       dropdown: [
-        { name: 'Meet Our Team', href: '#coaches' },
-        { name: 'Head Coach Profile', href: '#head-coach' },
-        { name: 'Specialized Trainers', href: '#trainers' }
+        { name: t('dropdown.coaches.team'), href: '#coaches' },
+        { name: t('dropdown.coaches.head'), href: '#head-coach' },
+        { name: t('dropdown.coaches.trainers'), href: '#trainers' }
       ]
     },
     { 
-      name: 'SCHEDULE', 
+      name: t('header.nav.schedule'), 
       href: '#schedule',
       dropdown: [
-        { name: 'Class Timetable', href: '#schedule' },
-        { name: 'Personal Training', href: '#personal' },
-        { name: 'Group Sessions', href: '#groups' }
+        { name: t('dropdown.schedule.timetable'), href: '#schedule' },
+        { name: t('dropdown.schedule.personal'), href: '#personal' },
+        { name: t('dropdown.schedule.groups'), href: '#groups' }
       ]
     },
     { 
-      name: 'SHOP', 
-      href: '#shop',
+      name: t('header.nav.shop'), 
+      href: '/shop',
       dropdown: [
-        { name: 'Boxing Gear', href: '#boxing-gear' },
-        { name: 'Wrestling Equipment', href: '#wrestling-gear' },
-        { name: 'EDESTORY Apparel', href: '#apparel' },
-        { name: 'Training Accessories', href: '#accessories' },
-        { name: 'Nutrition & Supplements', href: '#nutrition' }
+        { name: t('dropdown.shop.boxing'), href: '/shop/boxing' },
+        { name: t('dropdown.shop.wrestling'), href: '/shop/wrestling' },
+        { name: t('dropdown.shop.apparel'), href: '/shop/apparel' },
+        { name: t('dropdown.shop.accessories'), href: '/shop/accessories' },
+        { name: t('dropdown.shop.nutrition'), href: '/shop/nutrition' }
       ]
     },
-    { name: 'GALLERY', href: '#gallery' },
-    { name: 'CONTACT', href: '#contact' }
+    { name: t('header.nav.gallery'), href: '#gallery' },
+    { name: t('header.nav.contact'), href: '#contact' }
   ];
 
   return (
@@ -68,15 +70,25 @@ const Header = () => {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <Mail className="w-4 h-4" />
-              <span>info@edestory.com</span>
+              <span>{t('header.contact.email')}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Phone className="w-4 h-4" />
-              <span>+7 (495) 123-45-67</span>
+              <span>{t('header.contact.phone')}</span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="hidden md:inline">Follow Us:</span>
+            {/* Language Switcher */}
+            <div className="flex items-center space-x-2">
+              <Globe className="w-4 h-4" />
+              <button
+                onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}
+                className="hover:text-primary-light transition-colors font-medium"
+              >
+                {language === 'ru' ? 'EN' : 'RU'}
+              </button>
+            </div>
+            <span className="hidden md:inline">{t('header.follow')}</span>
             <div className="flex space-x-3">
               <Instagram className="w-4 h-4 hover:text-primary-light cursor-pointer transition-colors" />
               <MessageCircle className="w-4 h-4 hover:text-primary-light cursor-pointer transition-colors" />
@@ -97,7 +109,7 @@ const Header = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-primary">EDESTORY</h1>
-                <p className="text-xs text-muted-foreground tracking-wider">SPORTS ACADEMY</p>
+                <p className="text-xs text-muted-foreground tracking-wider">{t('header.academy')}</p>
               </div>
             </div>
 
@@ -156,7 +168,7 @@ const Header = () => {
                 onClick={() => scrollToSection('contact')}
                 className="hidden md:flex bg-primary hover:bg-primary-hover text-white px-6 py-2 font-semibold shadow-red transition-all hover:shadow-lg"
               >
-                Free Trial
+                {t('header.cta')}
               </Button>
 
               {/* Mobile Menu Toggle */}
@@ -181,7 +193,7 @@ const Header = () => {
                 onClick={() => scrollToSection('contact')}
                 className="w-full bg-primary hover:bg-primary-hover text-white py-3 font-semibold"
               >
-                Start Your Free Trial
+                {t('header.mobile.cta')}
               </Button>
             </div>
 
@@ -219,11 +231,11 @@ const Header = () => {
               <div className="flex flex-col space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>info@edestory.com</span>
+                  <span>{t('header.contact.email')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span>+7 (495) 123-45-67</span>
+                  <span>{t('header.contact.phone')}</span>
                 </div>
               </div>
             </div>

@@ -1,36 +1,39 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Play, Users, Trophy, Calendar, Target, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t } = useLanguage();
 
   const slides = [
     {
       id: 1,
-      title: "FORGE YOUR WARRIOR SPIRIT",
-      subtitle: "Professional Boxing & Wrestling Training for Champions",
-      description: "Join EDESTORY Sports Academy and master the art of combat sports with world-class trainers",
-      cta1: "Start Training",
-      cta2: "Watch Video",
+      title: t('hero.title1'),
+      title2: t('hero.title2'),
+      subtitle: t('hero.subtitle'),
+      description: t('hero.description'),
+      cta1: t('hero.cta1'),
+      cta2: t('hero.cta2'),
       background: "from-primary via-primary-dark to-secondary"
     },
     {
       id: 2,
-      title: "BOXING MASTERY",
-      subtitle: "Master The Sweet Science",
-      description: "Develop precision, power, and technique with our championship boxing program",
-      cta1: "Join Boxing Classes",
-      cta2: "Learn More",
+      title: t('hero.slide2.title'),
+      subtitle: t('hero.slide2.subtitle'),
+      description: t('hero.slide2.description'),
+      cta1: t('hero.slide2.cta1'),
+      cta2: "Узнать больше",
       background: "from-primary-dark via-primary to-primary-light"
     },
     {
       id: 3,
-      title: "WRESTLING POWER",
-      subtitle: "Unleash Your Grappling Power",
-      description: "Build strength, endurance, and tactical skills with our elite wrestling program",
-      cta1: "Start Wrestling Training",
-      cta2: "View Program",
+      title: t('hero.slide3.title'),
+      subtitle: t('hero.slide3.subtitle'), 
+      description: t('hero.slide3.description'),
+      cta1: t('hero.slide3.cta1'),
+      cta2: "Смотреть программу",
       background: "from-secondary via-primary-dark to-primary"
     }
   ];
