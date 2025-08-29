@@ -12,9 +12,11 @@ import Schedule from '@/components/Schedule';
 import Testimonials from '@/components/Testimonials';
 import SuccessStories from '@/components/SuccessStories';
 import Booking from '@/components/Booking';
+import Blog from '@/components/Blog';
 import CTASection from '@/components/CTASection';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import FloatingActions from '@/components/FloatingActions';
 
 const Index = () => {
   return (
@@ -34,9 +36,11 @@ const Index = () => {
         <SuccessStories />
         <Testimonials />
         <Booking />
+        <Blog />
         <CTASection />
         <Contact />
       </main>
+      <FloatingActions />
       <Footer />
     </div>
   );

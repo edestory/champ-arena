@@ -1,284 +1,286 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, User, Calendar } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Instagram, MessageCircle, Youtube, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-// Временное изображение для демонстрации
-const winnersImage = "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600&h=600&fit=crop";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
-    childName: '',
-    childAge: '',
-    parentName: '',
-    phone: '',
+    name: '',
     email: '',
-    sport: '',
-    timePreference: [],
-    message: ''
+    phone: '',
+    ageGroup: '',
+    interest: '',
+    message: '',
+    trialSession: false,
+    newsletter: false,
+    existingMember: false
   });
-
-  const handleTimePreferenceChange = (time: string, checked: boolean) => {
-    setFormData(prev => ({
-      ...prev,
-      timePreference: checked 
-        ? [...prev.timePreference, time]
-        : prev.timePreference.filter(t => t !== time)
-    }));
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Здесь будет логика отправки формы
     console.log('Form submitted:', formData);
-    alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+    alert(t('contact.form.success'));
   };
 
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Запишитесь на <span className="text-gradient">бесплатное занятие</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+            {t('contact.title')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Оставьте заявку, и мы свяжемся с вами для записи на пробную тренировку. 
-            Первое занятие всегда бесплатно!
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            {t('contact.subtitle')}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Form */}
-          <div className="bg-white rounded-3xl p-8 md:p-10 shadow-card animate-fade-in-left">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Child Information */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          <div className="space-y-8">
+            {/* Main Location */}
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-2xl font-bold text-secondary mb-6">EDESTORY Sports Academy</h3>
+              
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-foreground border-b border-border pb-2">
-                  Информация о ребенке
-                </h3>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="childName" className="text-sm font-medium text-foreground">
-                      Имя ребенка *
-                    </Label>
-                    <Input
-                      id="childName"
-                      value={formData.childName}
-                      onChange={(e) => setFormData(prev => ({...prev, childName: e.target.value}))}
-                      placeholder="Введите имя"
-                      required
-                      className="mt-1"
-                    />
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-primary" />
                   </div>
-                  
                   <div>
-                    <Label htmlFor="childAge" className="text-sm font-medium text-foreground">
-                      Возраст ребенка *
-                    </Label>
-                    <Select value={formData.childAge} onValueChange={(value) => setFormData(prev => ({...prev, childAge: value}))}>
-                      <SelectTrigger className="mt-1">
-                        <SelectValue placeholder="Выберите возраст" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="4-6">4-6 лет</SelectItem>
-                        <SelectItem value="7-10">7-10 лет</SelectItem>
-                        <SelectItem value="11-14">11-14 лет</SelectItem>
-                        <SelectItem value="15-18">15-18 лет</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <p className="font-semibold text-secondary">{t('contact.info.address.title')}</p>
+                    <p className="text-muted-foreground">{t('contact.info.address.value')}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-secondary">{t('contact.info.phone.title')}</p>
+                    <p className="text-muted-foreground">{t('contact.info.phone.value')}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-secondary">{t('contact.info.email.title')}</p>
+                    <p className="text-muted-foreground">{t('contact.info.email.value')}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-secondary">{t('contact.info.hours.title')}</p>
+                    <div className="text-muted-foreground">
+                      <p>{t('contact.info.hours.weekdays')}</p>
+                      <p>{t('contact.info.hours.saturday')}</p>
+                      <p>{t('contact.info.hours.sunday')}</p>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Parent Information */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold text-foreground border-b border-border pb-2">
-                  Контактная информация
-                </h3>
-                
+            {/* Departments */}
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-xl font-bold text-secondary mb-6">{t('contact.departments.title')}</h3>
+              <div className="space-y-3">
+                <p className="text-muted-foreground">🥊 {t('contact.departments.training')}: training@edestory.com</p>
+                <p className="text-muted-foreground">🛒 {t('contact.departments.shop')}: shop@edestory.com</p>
+                <p className="text-muted-foreground">👶 {t('contact.departments.kids')}: kids@edestory.com</p>
+                <p className="text-muted-foreground">🏆 {t('contact.departments.competitions')}: competitions@edestory.com</p>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-xl font-bold text-secondary mb-6">{t('contact.social.title')}</h3>
+              <p className="text-muted-foreground mb-4">{t('contact.social.subtitle')}</p>
+              <div className="flex space-x-4">
+                <div className="flex items-center space-x-2 bg-accent rounded-lg px-4 py-2">
+                  <Instagram className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium">@edestory_academy</span>
+                </div>
+                <div className="flex items-center space-x-2 bg-accent rounded-lg px-4 py-2">
+                  <MessageCircle className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium">@edestory_news</span>
+                </div>
+                <div className="flex items-center space-x-2 bg-accent rounded-lg px-4 py-2">
+                  <Youtube className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium">EDESTORY Sports</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="bg-white rounded-2xl p-8 shadow-card">
+            <h3 className="text-2xl font-bold text-secondary mb-6">{t('contact.form.title')}</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Name and Email */}
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="parentName" className="text-sm font-medium text-foreground">
-                    Имя родителя *
+                  <Label htmlFor="name" className="text-sm font-medium text-secondary">
+                    {t('contact.form.name')} *
                   </Label>
                   <Input
-                    id="parentName"
-                    value={formData.parentName}
-                    onChange={(e) => setFormData(prev => ({...prev, parentName: e.target.value}))}
-                    placeholder="Ваше имя"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({...prev, name: e.target.value}))}
+                    placeholder={t('contact.form.namePlaceholder')}
                     required
                     className="mt-1"
                   />
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="phone" className="text-sm font-medium text-foreground">
-                      Телефон *
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData(prev => ({...prev, phone: e.target.value}))}
-                      placeholder="+7 (999) 123-45-67"
-                      required
-                      className="mt-1"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email" className="text-sm font-medium text-foreground">
-                      Email
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData(prev => ({...prev, email: e.target.value}))}
-                      placeholder="your@email.com"
-                      className="mt-1"
-                    />
-                  </div>
+                <div>
+                  <Label htmlFor="email" className="text-sm font-medium text-secondary">
+                    {t('contact.form.email')} *
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({...prev, email: e.target.value}))}
+                    placeholder={t('contact.form.emailPlaceholder')}
+                    required
+                    className="mt-1"
+                  />
                 </div>
               </div>
 
-              {/* Sport Selection */}
+              {/* Phone */}
               <div>
-                <Label className="text-sm font-medium text-foreground">
-                  Выберите вид спорта *
+                <Label htmlFor="phone" className="text-sm font-medium text-secondary">
+                  {t('contact.form.phone')} *
                 </Label>
-                <Select value={formData.sport} onValueChange={(value) => setFormData(prev => ({...prev, sport: value}))}>
-                  <SelectTrigger className="mt-1">
-                    <SelectValue placeholder="Какой спорт интересует?" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="football">Футбол</SelectItem>
-                    <SelectItem value="basketball">Баскетбол</SelectItem>
-                    <SelectItem value="tennis">Теннис</SelectItem>
-                    <SelectItem value="general">Общефизическая подготовка</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData(prev => ({...prev, phone: e.target.value}))}
+                  placeholder={t('contact.form.phonePlaceholder')}
+                  required
+                  className="mt-1"
+                />
               </div>
 
-              {/* Time Preferences */}
-              <div>
-                <Label className="text-sm font-medium text-foreground mb-3 block">
-                  Удобное время для занятий
-                </Label>
-                <div className="grid grid-cols-2 gap-3">
-                  {['Утром (09:00-12:00)', 'Днем (12:00-16:00)', 'Вечером (16:00-20:00)', 'Выходные'].map((time) => (
-                    <div key={time} className="flex items-center space-x-2">
-                      <Checkbox 
-                        id={time}
-                        checked={formData.timePreference.includes(time)}
-                        onCheckedChange={(checked) => handleTimePreferenceChange(time, checked as boolean)}
-                      />
-                      <Label htmlFor={time} className="text-sm text-muted-foreground cursor-pointer">
-                        {time}
-                      </Label>
-                    </div>
-                  ))}
+              {/* Age Group and Interest */}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-sm font-medium text-secondary">
+                    {t('contact.form.ageGroup')}
+                  </Label>
+                  <Select value={formData.ageGroup} onValueChange={(value) => setFormData(prev => ({...prev, ageGroup: value}))}>
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder={t('contact.form.ageGroupPlaceholder')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="kids">{t('contact.form.ageGroups.kids')}</SelectItem>
+                      <SelectItem value="teens">{t('contact.form.ageGroups.teens')}</SelectItem>
+                      <SelectItem value="adults">{t('contact.form.ageGroups.adults')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label className="text-sm font-medium text-secondary">
+                    {t('contact.form.interest')}
+                  </Label>
+                  <Select value={formData.interest} onValueChange={(value) => setFormData(prev => ({...prev, interest: value}))}>
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder={t('contact.form.interestPlaceholder')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="boxing">{t('contact.form.interests.boxing')}</SelectItem>
+                      <SelectItem value="wrestling">{t('contact.form.interests.wrestling')}</SelectItem>
+                      <SelectItem value="fitness">{t('contact.form.interests.fitness')}</SelectItem>
+                      <SelectItem value="personal">{t('contact.form.interests.personal')}</SelectItem>
+                      <SelectItem value="equipment">{t('contact.form.interests.equipment')}</SelectItem>
+                      <SelectItem value="general">{t('contact.form.interests.general')}</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
               {/* Message */}
               <div>
-                <Label htmlFor="message" className="text-sm font-medium text-foreground">
-                  Дополнительная информация
+                <Label htmlFor="message" className="text-sm font-medium text-secondary">
+                  {t('contact.form.message')}
                 </Label>
                 <Textarea
                   id="message"
                   value={formData.message}
                   onChange={(e) => setFormData(prev => ({...prev, message: e.target.value}))}
-                  placeholder="Расскажите о целях, опыте ребенка или задайте вопросы..."
+                  placeholder={t('contact.form.messagePlaceholder')}
                   className="mt-1 min-h-[100px]"
                 />
+              </div>
+
+              {/* Checkboxes */}
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <Checkbox 
+                    id="trial"
+                    checked={formData.trialSession}
+                    onCheckedChange={(checked) => setFormData(prev => ({...prev, trialSession: checked as boolean}))}
+                  />
+                  <Label htmlFor="trial" className="text-sm text-muted-foreground cursor-pointer">
+                    {t('contact.form.checkboxes.trial')}
+                  </Label>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <Checkbox 
+                    id="newsletter"
+                    checked={formData.newsletter}
+                    onCheckedChange={(checked) => setFormData(prev => ({...prev, newsletter: checked as boolean}))}
+                  />
+                  <Label htmlFor="newsletter" className="text-sm text-muted-foreground cursor-pointer">
+                    {t('contact.form.checkboxes.newsletter')}
+                  </Label>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <Checkbox 
+                    id="existing"
+                    checked={formData.existingMember}
+                    onCheckedChange={(checked) => setFormData(prev => ({...prev, existingMember: checked as boolean}))}
+                  />
+                  <Label htmlFor="existing" className="text-sm text-muted-foreground cursor-pointer">
+                    {t('contact.form.checkboxes.existing')}
+                  </Label>
+                </div>
               </div>
 
               {/* Submit Button */}
               <Button 
                 type="submit" 
-                className="w-full gradient-primary text-white hover:opacity-90 transition-smooth py-6 text-lg"
+                className="w-full bg-primary hover:bg-primary-hover text-white py-3 font-semibold"
               >
                 <Send className="mr-2 w-5 h-5" />
-                Записаться бесплатно
+                {t('contact.form.submit')}
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+                {t('contact.form.privacy')}
               </p>
             </form>
-          </div>
-
-          {/* Right Side - Image and Info */}
-          <div className="space-y-8 animate-fade-in-right">
-            {/* Happy Kids Image */}
-            <div className="relative rounded-3xl overflow-hidden shadow-card">
-              <img 
-                src={winnersImage} 
-                alt="Счастливые дети с наградами"
-                className="w-full h-80 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Станьте частью нашей команды!</h3>
-                <p className="text-white/90">Уже более 150 детей тренируются в нашей школе</p>
-              </div>
-            </div>
-
-            {/* Contact Information */}
-            <div className="bg-surface rounded-3xl p-8">
-              <h3 className="text-xl font-bold text-foreground mb-6">Контактная информация</h3>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Адрес</div>
-                    <div className="text-muted-foreground">ул. Спортивная, 15</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-secondary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Телефон</div>
-                    <div className="text-muted-foreground">+7 (999) 123-45-67</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Email</div>
-                    <div className="text-muted-foreground">info@sportschool.ru</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Режим работы</div>
-                    <div className="text-muted-foreground">
-                      Пн-Пт: 09:00-21:00<br />
-                      Сб-Вс: 10:00-18:00
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

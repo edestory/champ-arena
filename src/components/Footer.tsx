@@ -1,6 +1,9 @@
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Instagram, MessageCircle, Youtube } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -9,140 +12,219 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-foreground text-white">
+    <footer className="bg-secondary text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Logo and Description */}
+          {/* Logo and Mission */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
-                <span className="text-white font-bold text-lg">S</span>
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">E</span>
               </div>
               <div>
-                <h3 className="font-bold text-xl text-white">SportSchool</h3>
-                <p className="text-xs text-white/70">Школа чемпионов</p>
+                <h3 className="text-2xl font-bold text-white">EDESTORY</h3>
+                <p className="text-xs text-white/70 tracking-wider">{t('footer.tagline')}</p>
               </div>
             </div>
+            
             <p className="text-white/80 leading-relaxed mb-6">
-              Мы помогаем детям развиваться через спорт, воспитывая чемпионов не только в спорте, но и в жизни.
+              {t('footer.mission')}
             </p>
-            <div className="flex gap-4">
+            
+            <div className="flex space-x-4">
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-smooth"
+                className="w-12 h-12 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
                 aria-label="Instagram"
               >
-                <span className="text-sm font-bold">IG</span>
+                <Instagram className="w-5 h-5" />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-smooth"
-                aria-label="ВКонтакте"
-              >
-                <span className="text-sm font-bold">VK</span>
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-smooth"
+                className="w-12 h-12 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
                 aria-label="Telegram"
               >
-                <span className="text-sm font-bold">TG</span>
+                <MessageCircle className="w-5 h-5" />
+              </a>
+              <a 
+                href="#" 
+                className="w-12 h-12 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Training Links */}
           <div>
-            <h4 className="font-bold text-lg text-white mb-4">Быстрые ссылки</h4>
+            <h4 className="font-bold text-lg text-white mb-6">{t('footer.training.title')}</h4>
             <ul className="space-y-3">
               <li>
                 <button 
-                  onClick={() => scrollToSection('home')}
-                  className="text-white/80 hover:text-white transition-smooth"
+                  onClick={() => scrollToSection('programs')}
+                  className="text-white/80 hover:text-white transition-colors text-left"
                 >
-                  Главная
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('about')}
-                  className="text-white/80 hover:text-white transition-smooth"
-                >
-                  О нас
+                  {t('footer.training.boxing')}
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => scrollToSection('programs')}
-                  className="text-white/80 hover:text-white transition-smooth"
+                  className="text-white/80 hover:text-white transition-colors text-left"
                 >
-                  Программы
+                  {t('footer.training.wrestling')}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('programs')}
+                  className="text-white/80 hover:text-white transition-colors text-left"
+                >
+                  {t('footer.training.kids')}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('programs')}
+                  className="text-white/80 hover:text-white transition-colors text-left"
+                >
+                  {t('footer.training.fitness')}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('booking')}
+                  className="text-white/80 hover:text-white transition-colors text-left"
+                >
+                  {t('footer.training.personal')}
+                </button>
+              </li>
+            </ul>
+
+            <h5 className="font-bold text-white mt-6 mb-4">{t('footer.about.title')}</h5>
+            <ul className="space-y-3">
+              <li>
+                <button 
+                  onClick={() => scrollToSection('about')}
+                  className="text-white/80 hover:text-white transition-colors text-left"
+                >
+                  {t('footer.about.story')}
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => scrollToSection('coaches')}
-                  className="text-white/80 hover:text-white transition-smooth"
+                  className="text-white/80 hover:text-white transition-colors text-left"
                 >
-                  Тренеры
+                  {t('footer.about.coaches')}
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => scrollToSection('schedule')}
-                  className="text-white/80 hover:text-white transition-smooth"
+                  onClick={() => scrollToSection('facilities')}
+                  className="text-white/80 hover:text-white transition-colors text-left"
                 >
-                  Расписание
+                  {t('footer.about.facilities')}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('gallery')}
+                  className="text-white/80 hover:text-white transition-colors text-left"
+                >
+                  {t('footer.about.success')}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('blog')}
+                  className="text-white/80 hover:text-white transition-colors text-left"
+                >
+                  {t('footer.about.blog')}
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Programs */}
+          {/* Shop Links */}
           <div>
-            <h4 className="font-bold text-lg text-white mb-4">Наши программы</h4>
+            <h4 className="font-bold text-lg text-white mb-6">{t('footer.shop.title')}</h4>
             <ul className="space-y-3">
-              <li className="text-white/80">Футбол (4-18 лет)</li>
-              <li className="text-white/80">Баскетбол (6-18 лет)</li>
-              <li className="text-white/80">Теннис (5-18 лет)</li>
-              <li className="text-white/80">ОФП (4-18 лет)</li>
-              <li className="text-white/80">Персональные тренировки</li>
+              <li>
+                <a href="/shop/boxing" className="text-white/80 hover:text-white transition-colors">
+                  {t('footer.shop.boxing')}
+                </a>
+              </li>
+              <li>
+                <a href="/shop/wrestling" className="text-white/80 hover:text-white transition-colors">
+                  {t('footer.shop.wrestling')}
+                </a>
+              </li>
+              <li>
+                <a href="/shop/apparel" className="text-white/80 hover:text-white transition-colors">
+                  {t('footer.shop.apparel')}
+                </a>
+              </li>
+              <li>
+                <a href="/shop/accessories" className="text-white/80 hover:text-white transition-colors">
+                  {t('footer.shop.accessories')}
+                </a>
+              </li>
+              <li>
+                <a href="/shop/supplements" className="text-white/80 hover:text-white transition-colors">
+                  {t('footer.shop.supplements')}
+                </a>
+              </li>
+            </ul>
+
+            <h5 className="font-bold text-white mt-6 mb-4">{t('footer.services.title')}</h5>
+            <ul className="space-y-3">
+              <li className="text-white/80">{t('footer.services.guide')}</li>
+              <li className="text-white/80">{t('footer.services.shipping')}</li>
+              <li className="text-white/80">{t('footer.services.returns')}</li>
+              <li className="text-white/80">{t('footer.services.discounts')}</li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold text-lg text-white mb-4">Контакты</h4>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
+            <h4 className="font-bold text-lg text-white mb-6">{t('footer.contact.title')}</h4>
+            
+            <div className="space-y-4 mb-6">
+              <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-white/80">ул. Спортивная, 15</div>
-                  <div className="text-white/60 text-sm">Спортивный комплекс</div>
+                  <p className="text-white font-medium">{t('footer.contact.location')}</p>
+                  <p className="text-white/80 text-sm">{t('footer.contact.address')}</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-white/80">+7 (999) 123-45-67</div>
-                  <div className="text-white/60 text-sm">Звоните ежедневно</div>
+                  <p className="text-white font-medium">{t('footer.contact.phone')}</p>
+                  <p className="text-white/80 text-sm">WhatsApp: +7 (999) 876-54-32</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-3">
+                <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-white/80">info@sportschool.ru</div>
-                  <div className="text-white/60 text-sm">Ответим в течение часа</div>
+                  <p className="text-white font-medium">{t('footer.contact.email')}</p>
+                  <p className="text-white/80 text-sm">{t('footer.contact.emergency')}</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
+              <div className="flex items-start space-x-3">
                 <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-white/80">Пн-Пт: 09:00-21:00</div>
-                  <div className="text-white/80">Сб-Вс: 10:00-18:00</div>
+                  <p className="text-white font-medium">{t('footer.contact.hours.title')}</p>
+                  <div className="text-white/80 text-sm">
+                    <p>{t('footer.contact.hours.weekdays')}</p>
+                    <p>{t('footer.contact.hours.saturday')}</p>
+                    <p>{t('footer.contact.hours.sunday')}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -152,23 +234,32 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-white/60 text-sm">
-              © 2024 SportSchool. Все права защищены.
+            <div className="text-white/60 text-sm text-center md:text-left">
+              {t('footer.copyright')}
             </div>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="text-white/60 hover:text-white transition-smooth">
-                Политика конфиденциальности
+            <div className="flex flex-wrap gap-6 text-sm">
+              <a href="#" className="text-white/60 hover:text-white transition-colors">
+                {t('footer.legal.privacy')}
               </a>
-              <a href="#" className="text-white/60 hover:text-white transition-smooth">
-                Пользовательское соглашение
+              <a href="#" className="text-white/60 hover:text-white transition-colors">
+                {t('footer.legal.terms')}
+              </a>
+              <a href="#" className="text-white/60 hover:text-white transition-colors">
+                {t('footer.legal.cookies')}
               </a>
             </div>
+          </div>
+          
+          <div className="text-center mt-4">
+            <p className="text-white/60 text-xs">
+              {t('footer.certification')}
+            </p>
           </div>
         </div>
       </div>
 
       {/* Bottom Accent Line */}
-      <div className="h-1 gradient-primary"></div>
+      <div className="h-2 bg-gradient-primary"></div>
     </footer>
   );
 };
