@@ -1,125 +1,181 @@
-import { ArrowRight, Clock, Users, Star } from 'lucide-react';
+import { ArrowRight, Clock, Users, Star, Trophy, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-// Временные изображения для демонстрации
-const footballImage = "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&h=400&fit=crop";
-const basketballImage = "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop";
-const tennisImage = "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop";
 
 const Programs = () => {
   const programs = [
     {
-      sport: "Футбол",
-      image: footballImage,
-      groups: [
-        { name: "Малыши (4-6 лет)", price: "6000₽/мес", schedule: "2 раза в неделю" },
-        { name: "Детская группа (7-10 лет)", price: "8000₽/мес", schedule: "3 раза в неделю" },
-        { name: "Подростки (11-15 лет)", price: "9500₽/мес", schedule: "3 раза в неделю" }
+      id: 1,
+      title: "BOXING FUNDAMENTALS",
+      image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&h=400&fit=crop",
+      age: "Ages 8-16",
+      description: "Master the sweet science with proper technique, footwork, and conditioning",
+      price: "From 8,000₽/month",
+      features: [
+        "Basic punching techniques",
+        "Footwork training", 
+        "Physical conditioning"
       ],
-      description: "Развитие координации, техники владения мячом, тактического мышления",
-      features: ["Профессиональное поле", "Современные мячи", "Участие в турнирах"]
+      cta: "Join Boxing",
+      popular: false
     },
     {
-      sport: "Баскетбол",
-      image: basketballImage,
-      groups: [
-        { name: "Начинающие (6-9 лет)", price: "7500₽/мес", schedule: "2 раза в неделю" },
-        { name: "Средняя группа (10-14 лет)", price: "9000₽/мес", schedule: "3 раза в неделю" },
-        { name: "Продвинутые (15-18 лет)", price: "10500₽/мес", schedule: "4 раза в неделю" }
+      id: 2,
+      title: "WRESTLING MASTERY",
+      image: "https://images.unsplash.com/photo-1583473848882-f9a5c8b8c4b0?w=600&h=400&fit=crop",
+      age: "Ages 10-18",
+      description: "Develop superior grappling skills, takedowns, and ground control",
+      price: "From 9,000₽/month",
+      features: [
+        "Takedown techniques",
+        "Ground control",
+        "Competition preparation"
       ],
-      description: "Развитие ловкости, координации, командной игры и лидерских качеств",
-      features: ["Полноразмерная площадка", "Профессиональные кольца", "Командные игры"]
+      cta: "Start Wrestling",
+      popular: false
     },
     {
-      sport: "Теннис",
-      image: tennisImage,
-      groups: [
-        { name: "Мини-теннис (5-8 лет)", price: "8500₽/мес", schedule: "2 раза в неделю" },
-        { name: "Юниоры (9-13 лет)", price: "10000₽/мес", schedule: "3 раза в неделю" },
-        { name: "Турнирная группа (14-18 лет)", price: "12000₽/мес", schedule: "4 раза в неделю" }
+      id: 3,
+      title: "KIDS COMBAT SPORTS",
+      image: "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600&h=400&fit=crop",
+      age: "Ages 6-12",
+      description: "Safe introduction to martial arts focusing on discipline and fun",
+      price: "From 6,500₽/month",
+      features: [
+        "Age-appropriate techniques",
+        "Character development",
+        "Anti-bullying skills"
       ],
-      description: "Техника ударов, тактика игры, развитие реакции и концентрации",
-      features: ["Крытые корты", "Профессиональные ракетки", "Индивидуальные занятия"]
+      cta: "Kids Classes",
+      popular: true
+    },
+    {
+      id: 4,
+      title: "ADULT FITNESS BOXING",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      age: "Ages 18+",
+      description: "High-intensity boxing workouts for fitness and stress relief",
+      price: "From 7,500₽/month",
+      features: [
+        "Cardio conditioning",
+        "Technique training",
+        "Stress management"
+      ],
+      cta: "Adult Training",
+      popular: false
+    },
+    {
+      id: 5,
+      title: "COMPETITION PREP",
+      image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=400&fit=crop",
+      age: "Advanced only",
+      description: "Elite training for competitive athletes and tournament preparation",
+      price: "From 15,000₽/month",
+      features: [
+        "1-on-1 coaching",
+        "Competition strategy",
+        "Mental preparation"
+      ],
+      cta: "Go Pro",
+      popular: false
+    },
+    {
+      id: 6,
+      title: "PERSONAL TRAINING",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      age: "All ages",
+      description: "One-on-one sessions tailored to your specific goals and needs",
+      price: "From 3,500₽/session",
+      features: [
+        "Customized programs",
+        "Flexible scheduling",
+        "Faster progress"
+      ],
+      cta: "Book Session",
+      popular: false
     }
-  ];
-
-  const additionalServices = [
-    { name: "Персональные тренировки", price: "2500₽/занятие", duration: "60 минут" },
-    { name: "Общефизическая подготовка", price: "6000₽/мес", duration: "8 занятий" },
-    { name: "Спортивные сборы", price: "15000₽/неделя", duration: "7 дней" }
   ];
 
   return (
     <section id="programs" className="py-20 bg-background">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Программы <span className="text-gradient">тренировок</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+            Training Programs
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Выберите подходящую программу для вашего ребенка. 
-            Все группы формируются по возрасту и уровню подготовки
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Choose Your Path to Mastery
           </p>
         </div>
 
-        {/* Main Programs */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {programs.map((program, index) => (
-            <div 
-              key={index}
-              className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-card transition-smooth card-hover animate-fade-in-up"
-              style={{animationDelay: `${index * 0.1}s`}}
+        {/* Programs Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {programs.map((program) => (
+            <div
+              key={program.id}
+              className={`group bg-white rounded-2xl shadow-card hover:shadow-red hover:-translate-y-2 transition-all duration-300 overflow-hidden ${
+                program.popular ? 'ring-2 ring-primary' : ''
+              }`}
             >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={program.image} 
-                  alt={`${program.sport} тренировки`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-smooth duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute bottom-4 left-4">
-                  <h3 className="text-2xl font-bold text-white">{program.sport}</h3>
+              {/* Popular Badge */}
+              {program.popular && (
+                <div className="bg-primary text-white text-sm font-semibold px-4 py-2 text-center">
+                  MOST POPULAR
                 </div>
+              )}
+
+              {/* Image */}
+              <div className="aspect-[3/2] overflow-hidden">
+                <img 
+                  src={program.image}
+                  alt={program.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
 
-              <div className="p-8">
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+              {/* Content */}
+              <div className="p-6">
+                {/* Age & Title */}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                    {program.age}
+                  </span>
+                  <div className="text-2xl font-bold text-primary">
+                    {program.price.split(' ')[1]}
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">
+                  {program.title}
+                </h3>
+
+                <p className="text-muted-foreground mb-4 leading-relaxed">
                   {program.description}
                 </p>
 
-                {/* Groups and Prices */}
-                <div className="space-y-4 mb-6">
-                  {program.groups.map((group, groupIndex) => (
-                    <div key={groupIndex} className="flex justify-between items-center p-4 bg-surface rounded-xl">
-                      <div>
-                        <div className="font-semibold text-foreground">{group.name}</div>
-                        <div className="text-sm text-muted-foreground flex items-center gap-2">
-                          <Clock className="w-4 h-4" />
-                          {group.schedule}
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-bold text-lg text-primary">{group.price}</div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="text-sm font-medium text-secondary mb-4">
+                  {program.price}
                 </div>
 
                 {/* Features */}
-                <div className="mb-6">
-                  <h4 className="font-semibold text-foreground mb-3">Что включено:</h4>
-                  <ul className="space-y-2">
-                    {program.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-2 text-muted-foreground">
-                        <Star className="w-4 h-4 text-accent" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="space-y-2 mb-6">
+                  {program.features.map((feature, index) => (
+                    <li key={index} className="flex items-center space-x-2 text-sm text-muted-foreground">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <Button className="w-full gradient-primary text-white hover:opacity-90 transition-smooth">
-                  Записаться в группу
+                {/* CTA */}
+                <Button 
+                  className={`w-full font-semibold transition-all ${
+                    program.popular 
+                      ? 'bg-primary hover:bg-primary-hover text-white shadow-red'
+                      : 'bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white'
+                  }`}
+                >
+                  {program.cta}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>
@@ -127,30 +183,14 @@ const Programs = () => {
           ))}
         </div>
 
-        {/* Additional Services */}
-        <div className="bg-surface rounded-3xl p-8 md:p-12">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8">
-            Дополнительные услуги
-          </h3>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {additionalServices.map((service, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-2xl p-6 text-center hover:shadow-card transition-smooth card-hover"
-              >
-                <h4 className="font-bold text-lg text-foreground mb-2">{service.name}</h4>
-                <div className="text-2xl font-bold text-primary mb-2">{service.price}</div>
-                <div className="text-muted-foreground text-sm">{service.duration}</div>
-                <Button 
-                  variant="outline" 
-                  className="mt-4 w-full border-primary text-primary hover:bg-primary hover:text-white transition-smooth"
-                >
-                  Узнать подробнее
-                </Button>
-              </div>
-            ))}
-          </div>
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-lg text-muted-foreground mb-6">
+            Not sure which program is right for you?
+          </p>
+          <Button className="bg-primary hover:bg-primary-hover text-white px-8 py-3 font-semibold shadow-red">
+            Schedule a Free Consultation
+          </Button>
         </div>
       </div>
     </section>
