@@ -24,7 +24,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    // Form submission would be handled by API in production
     alert(t('contact.form.success'));
   };
 
