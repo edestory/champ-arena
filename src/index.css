@@ -16,20 +16,22 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 5%;
     
-    /* Primary - Dynamic Blue */
-    --primary: 217 91% 60%;
+    /* Primary - EDESTORY Red */
+    --primary: 0 70% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 217 91% 55%;
+    --primary-hover: 0 70% 45%;
+    --primary-light: 0 70% 70%;
+    --primary-dark: 0 70% 35%;
     
-    /* Secondary - Success Green */
-    --secondary: 158 64% 52%;
+    /* Secondary - Dark Charcoal */
+    --secondary: 218 23% 23%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 158 64% 47%;
+    --secondary-hover: 218 23% 18%;
     
-    /* Accent - Victory Orange */
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 100%;
-    --accent-hover: 38 92% 45%;
+    /* Accent - Light Gray */
+    --accent: 210 20% 98%;
+    --accent-foreground: 218 23% 23%;
+    --accent-hover: 210 20% 95%;
     
     /* Surface & Neutral Colors */
     --muted: 210 40% 98%;
@@ -47,23 +49,27 @@
     --destructive-foreground: 0 0% 100%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 55%));
-    --gradient-secondary: linear-gradient(135deg, hsl(158 64% 52%), hsl(158 64% 47%));
-    --gradient-accent: linear-gradient(135deg, hsl(38 92% 50%), hsl(38 92% 45%));
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.9), hsl(158 64% 52% / 0.9));
+    --gradient-primary: linear-gradient(135deg, hsl(0 70% 50%), hsl(0 70% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(218 23% 23%), hsl(218 23% 18%));
+    --gradient-accent: linear-gradient(135deg, hsl(210 20% 98%), hsl(210 20% 95%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 70% 50% / 0.9), hsl(218 23% 23% / 0.8));
+    --gradient-combat: linear-gradient(45deg, hsl(0 70% 50%), hsl(0 70% 40%), hsl(218 23% 23%));
     
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
     --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
     --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
-    --shadow-hero: 0 25px 50px -12px hsl(217 91% 60% / 0.25);
+    --shadow-hero: 0 25px 50px -12px hsl(0 70% 50% / 0.25);
+    --shadow-red: 0 10px 30px -10px hsl(0 70% 50% / 0.3);
     --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.1);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     
-    --radius: 0.75rem;
+    /* Font Families */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 
     --sidebar-background: 0 0% 98%;
 
@@ -145,6 +151,10 @@
   
   .shadow-card {
     box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-red {
+    box-shadow: var(--shadow-red);
   }
   
   .transition-smooth {
@@ -269,7 +279,12 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: var(--font-primary);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
   
   html {
