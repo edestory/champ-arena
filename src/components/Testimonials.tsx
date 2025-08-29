@@ -1,59 +1,61 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Testimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t } = useLanguage();
 
   const testimonials = [
     {
       id: 1,
-      name: "Alexander",
+      name: "Александр",
       age: 16,
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-      text: "EDESTORY transformed me from a shy kid to a confident young man. The coaches are amazing and really care about each student.",
-      achievement: "Regional Boxing Champion",
+      text: t('testimonials.alexander.text'),
+      achievement: t('testimonials.alexander.achievement'),
       rating: 5,
-      program: "Boxing Fundamentals"
+      program: t('testimonials.alexander.program')
     },
     {
       id: 2,
-      name: "Maria",
+      name: "Мария",
       age: 14,
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-      text: "Wrestling at EDESTORY taught me discipline and strength. I love the supportive environment and challenging training.",
-      achievement: "National Youth Medalist",
+      text: t('testimonials.maria.text'),
+      achievement: t('testimonials.maria.achievement'),
       rating: 5,
-      program: "Wrestling Mastery"
+      program: t('testimonials.maria.program')
     },
     {
       id: 3,
-      name: "Dmitry",
+      name: "Дмитрий",
       age: 28, 
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      text: "Adult fitness boxing classes are fantastic! Great workout, stress relief, and I've learned real self-defense skills.",
-      achievement: "Lost 15kg in 6 months",
+      text: t('testimonials.dmitry.text'),
+      achievement: t('testimonials.dmitry.achievement'),
       rating: 5,
-      program: "Adult Fitness Boxing"
+      program: t('testimonials.dmitry.program')
     },
     {
       id: 4,
-      name: "Elena",
+      name: "Елена",
       age: 12,
       image: "https://images.unsplash.com/photo-1542206395-9feb3edaa68d?w=150&h=150&fit=crop&crop=face",
-      text: "The kids program is so much fun! I learned how to be brave and stand up for myself. My parents are so proud of me.",
-      achievement: "Junior Club Champion",
+      text: t('testimonials.elena.text'),
+      achievement: t('testimonials.elena.achievement'),
       rating: 5,
-      program: "Kids Combat Sports"
+      program: t('testimonials.elena.program')
     },
     {
       id: 5,
-      name: "Viktor",
+      name: "Виктор",
       age: 22,
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-      text: "The competition prep program is intense but worth it. My coaches pushed me to achieve things I never thought possible.",
-      achievement: "National Tournament Finalist",
+      text: t('testimonials.viktor.text'),
+      achievement: t('testimonials.viktor.achievement'),
       rating: 5,
-      program: "Competition Prep"
+      program: t('testimonials.viktor.program')
     }
   ];
 
@@ -87,10 +89,10 @@ const Testimonials = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            Student Success Stories
+            {t('testimonials.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Hear From Our Champions
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -183,17 +185,17 @@ const Testimonials = () => {
           <div className="inline-flex items-center space-x-8 bg-white rounded-2xl px-8 py-6 shadow-card">
             <div>
               <div className="text-3xl font-bold text-primary">4.9/5</div>
-              <div className="text-sm text-muted-foreground">Average Rating</div>
+              <div className="text-sm text-muted-foreground">{t('testimonials.stats.rating')}</div>
             </div>
             <div className="w-px h-12 bg-border"></div>
             <div>
               <div className="text-3xl font-bold text-primary">500+</div>
-              <div className="text-sm text-muted-foreground">Happy Students</div>
+              <div className="text-sm text-muted-foreground">{t('testimonials.stats.students')}</div>
             </div>
             <div className="w-px h-12 bg-border"></div>
             <div>
               <div className="text-3xl font-bold text-primary">98%</div>
-              <div className="text-sm text-muted-foreground">Would Recommend</div>
+              <div className="text-sm text-muted-foreground">{t('testimonials.stats.recommend')}</div>
             </div>
           </div>
         </div>

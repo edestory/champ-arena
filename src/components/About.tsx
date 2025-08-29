@@ -1,27 +1,30 @@
 import { Award, Users, Target, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
+
   const keyPoints = [
     {
       icon: Award,
-      title: "Expert Coaching",
-      description: "International championship experience"
+      title: t('about.points.coaching'),
+      description: t('about.points.coaching.desc')
     },
     {
       icon: TrendingUp,
-      title: "Proven Results", 
-      description: "85% competition success rate"
+      title: t('about.points.results'), 
+      description: t('about.points.results.desc')
     },
     {
       icon: Target,
-      title: "Individual Focus",
-      description: "Personalized training programs"
+      title: t('about.points.focus'),
+      description: t('about.points.focus.desc')
     },
     {
       icon: Users,
-      title: "Complete Development",
-      description: "Physical, mental & technical growth"
+      title: t('about.points.development'),
+      description: t('about.points.development.desc')
     }
   ];
 
@@ -31,10 +34,10 @@ const About = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            About EDESTORY Sports Academy
+            {t('about.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Building Champions Through Discipline & Dedication
+            {t('about.subtitle')}
           </p>
         </div>
 
@@ -51,7 +54,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-white">
                 <div className="text-3xl font-bold">2016</div>
-                <div className="text-sm">Established</div>
+                <div className="text-sm">{t('common.established')}</div>
               </div>
             </div>
           </div>
@@ -59,11 +62,11 @@ const About = () => {
           {/* Right - Content */}
           <div>
             <h3 className="text-3xl font-bold text-secondary mb-6">
-              Where Warriors Are Born
+              {t('about.hero.title')}
             </h3>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              EDESTORY Sports Academy has been the premier destination for combat sports training since 2016. Our world-class facility combines traditional martial arts wisdom with modern training methodologies.
+              {t('about.description')}
             </p>
 
             {/* Key Points */}
@@ -90,7 +93,7 @@ const About = () => {
 
             {/* CTA */}
             <Button className="bg-primary hover:bg-primary-hover text-white px-8 py-3 font-semibold shadow-red">
-              Learn Our Story
+              {t('about.cta')}
             </Button>
           </div>
         </div>

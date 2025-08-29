@@ -1,33 +1,36 @@
 import { Target, BookOpen, TrendingUp, Trophy } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Features = () => {
+  const { t } = useLanguage();
+
   const steps = [
     {
       icon: Target,
-      title: "ASSESSMENT & GOAL SETTING",
-      description: "Personal evaluation and customized training plan development",
-      time: "Week 1",
+      title: t('features.step1.title'),
+      description: t('features.step1.desc'),
+      time: t('features.step1.time'),
       color: "from-primary to-primary-dark"
     },
     {
       icon: BookOpen,
-      title: "FUNDAMENTAL TECHNIQUES",
-      description: "Master basic strikes, footwork, and defensive movements",
-      time: "Weeks 2-8", 
+      title: t('features.step2.title'),
+      description: t('features.step2.desc'),
+      time: t('features.step2.time'), 
       color: "from-primary-dark to-secondary"
     },
     {
       icon: TrendingUp,
-      title: "SKILL DEVELOPMENT",
-      description: "Advanced combinations, sparring preparation, and conditioning",
-      time: "Weeks 9-16",
+      title: t('features.step3.title'),
+      description: t('features.step3.desc'),
+      time: t('features.step3.time'),
       color: "from-secondary to-primary"
     },
     {
       icon: Trophy,
-      title: "COMPETITION READY",
-      description: "Tournament preparation, advanced strategy, and peak performance",
-      time: "Week 16+",
+      title: t('features.step4.title'),
+      description: t('features.step4.desc'),
+      time: t('features.step4.time'),
       color: "from-primary to-primary-light"
     }
   ];
@@ -38,10 +41,10 @@ const Features = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            What You Get
+            {t('features.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Complete Training Experience
+            {t('features.subtitle')}
           </p>
         </div>
 
@@ -104,10 +107,10 @@ const Features = () => {
         <div className="mt-20 bg-white rounded-2xl p-8 shadow-card">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-secondary mb-2">
-              Training Success Metrics
+              {t('features.metrics.title')}
             </h3>
             <p className="text-muted-foreground">
-              Real results from our structured approach
+              {t('features.metrics.subtitle')}
             </p>
           </div>
 
@@ -116,25 +119,25 @@ const Features = () => {
               <div className="text-4xl font-bold text-primary mb-2 group-hover:text-primary-dark transition-colors">
                 95%
               </div>
-              <div className="text-sm text-muted-foreground">Goal Achievement</div>
+              <div className="text-sm text-muted-foreground">{t('features.metrics.achievement')}</div>
             </div>
             <div className="group hover:scale-105 transition-transform duration-300">
               <div className="text-4xl font-bold text-primary mb-2 group-hover:text-primary-dark transition-colors">
                 6-8
               </div>
-              <div className="text-sm text-muted-foreground">Weeks to Progress</div>
+              <div className="text-sm text-muted-foreground">{t('features.metrics.progress')}</div>
             </div>
             <div className="group hover:scale-105 transition-transform duration-300">
               <div className="text-4xl font-bold text-primary mb-2 group-hover:text-primary-dark transition-colors">
                 85%
               </div>
-              <div className="text-sm text-muted-foreground">Competition Ready</div>
+              <div className="text-sm text-muted-foreground">{t('features.metrics.competition')}</div>
             </div>
             <div className="group hover:scale-105 transition-transform duration-300">
               <div className="text-4xl font-bold text-primary mb-2 group-hover:text-primary-dark transition-colors">
                 100%
               </div>
-              <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
+              <div className="text-sm text-muted-foreground">{t('features.metrics.satisfaction')}</div>
             </div>
           </div>
         </div>

@@ -1,62 +1,65 @@
 import { Check, Star, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Pricing = () => {
+  const { t } = useLanguage();
+
   const plans = [
     {
-      name: "STARTER",
+      name: t('pricing.starter.name'),
       price: "6,500",
-      description: "Perfect for beginners",
+      description: t('pricing.starter.desc'),
       popular: false,
       features: [
-        "2 classes per week",
-        "Basic equipment included",
-        "Access to locker room", 
-        "Beginner-friendly programs",
-        "Group training only"
+        t('pricing.starter.feature1'),
+        t('pricing.starter.feature2'),
+        t('pricing.starter.feature3'), 
+        t('pricing.starter.feature4'),
+        t('pricing.starter.feature5')
       ],
-      cta: "Choose Starter",
+      cta: t('pricing.starter.cta'),
       icon: Star
     },
     {
-      name: "CHAMPION",
+      name: t('pricing.champion.name'),
       price: "11,500",
-      description: "Most popular choice",
+      description: t('pricing.champion.desc'),
       popular: true,
-      badge: "BEST VALUE",
+      badge: t('pricing.champion.badge'),
       features: [
-        "Unlimited group classes",
-        "2 personal training sessions",
-        "Competition preparation",
-        "Nutrition consultation",
-        "Access to all equipment",
-        "Priority booking"
+        t('pricing.champion.feature1'),
+        t('pricing.champion.feature2'),
+        t('pricing.champion.feature3'),
+        t('pricing.champion.feature4'),
+        t('pricing.champion.feature5'),
+        t('pricing.champion.feature6')
       ],
-      cta: "Choose Champion",
+      cta: t('pricing.champion.cta'),
       icon: Crown
     },
     {
-      name: "ELITE",
+      name: t('pricing.elite.name'),
       price: "18,500", 
-      description: "For serious athletes",
+      description: t('pricing.elite.desc'),
       popular: false,
       features: [
-        "Unlimited all access",
-        "4 personal training sessions",
-        "Competition coaching",
-        "Individual meal plans",
-        "Recovery treatments",
-        "Guest privileges"
+        t('pricing.elite.feature1'),
+        t('pricing.elite.feature2'),
+        t('pricing.elite.feature3'),
+        t('pricing.elite.feature4'),
+        t('pricing.elite.feature5'),
+        t('pricing.elite.feature6')
       ],
-      cta: "Go Elite",
+      cta: t('pricing.elite.cta'),
       icon: Crown
     }
   ];
 
   const additionalServices = [
-    { name: "Personal Training Session", price: "3,500₽" },
-    { name: "Competition Preparation", price: "5,000₽/month" },
-    { name: "Nutrition Consulting", price: "2,500₽/session" }
+    { name: t('pricing.additional.personal'), price: "3,500₽" },
+    { name: t('pricing.additional.competition'), price: "5,000₽/" + t('common.month') },
+    { name: t('pricing.additional.nutrition'), price: "2,500₽/" + t('common.session') }
   ];
 
   return (
@@ -65,16 +68,16 @@ const Pricing = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            Membership Plans
+            {t('pricing.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Flexible Options for Every Goal
+            {t('pricing.subtitle')}
           </p>
           
           {/* Annual Discount Banner */}
           <div className="inline-flex items-center bg-primary/10 text-primary px-6 py-3 rounded-full font-semibold">
             <Star className="w-5 h-5 mr-2" />
-            Save 15% with Annual Membership
+            {t('pricing.save')}
           </div>
         </div>
 
@@ -119,7 +122,7 @@ const Pricing = () => {
                     <div className="text-5xl font-bold text-primary mb-2">
                       {plan.price}₽
                     </div>
-                    <div className="text-muted-foreground">per month</div>
+                    <div className="text-muted-foreground">в месяц</div>
                   </div>
 
                   {/* Features */}
@@ -155,7 +158,7 @@ const Pricing = () => {
         {/* Additional Services */}
         <div className="bg-accent rounded-2xl p-8">
           <h3 className="text-2xl font-bold text-secondary text-center mb-8">
-            Additional Services
+            {t('pricing.additional.title')}
           </h3>
           
           <div className="grid md:grid-cols-3 gap-6">
@@ -175,10 +178,10 @@ const Pricing = () => {
         {/* Bottom Note */}
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">
-            Pay monthly or save with yearly plans
+            {t('pricing.bottom.text')}
           </p>
           <Button className="bg-primary hover:bg-primary-hover text-white px-8 py-3 font-semibold shadow-red">
-            Get Started Today
+            {t('pricing.bottom.cta')}
           </Button>
         </div>
       </div>

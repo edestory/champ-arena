@@ -1,96 +1,99 @@
 import { ArrowRight, Clock, Users, Star, Trophy, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Programs = () => {
+  const { t } = useLanguage();
+
   const programs = [
     {
       id: 1,
-      title: "BOXING FUNDAMENTALS",
+      title: t('programs.boxing.title'),
       image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&h=400&fit=crop",
-      age: "Ages 8-16",
-      description: "Master the sweet science with proper technique, footwork, and conditioning",
-      price: "From 8,000₽/month",
+      age: t('programs.boxing.age'),
+      description: t('programs.boxing.desc'),
+      price: t('programs.boxing.price'),
       features: [
-        "Basic punching techniques",
-        "Footwork training", 
-        "Physical conditioning"
+        t('programs.boxing.features.1'),
+        t('programs.boxing.features.2'), 
+        t('programs.boxing.features.3')
       ],
-      cta: "Join Boxing",
+      cta: t('programs.boxing.cta'),
       popular: false
     },
     {
       id: 2,
-      title: "WRESTLING MASTERY",
+      title: t('programs.wrestling.title'),
       image: "https://images.unsplash.com/photo-1583473848882-f9a5c8b8c4b0?w=600&h=400&fit=crop",
-      age: "Ages 10-18",
-      description: "Develop superior grappling skills, takedowns, and ground control",
-      price: "From 9,000₽/month",
+      age: t('programs.wrestling.age'),
+      description: t('programs.wrestling.desc'),
+      price: t('programs.wrestling.price'),
       features: [
-        "Takedown techniques",
-        "Ground control",
-        "Competition preparation"
+        t('programs.wrestling.features.1'),
+        t('programs.wrestling.features.2'),
+        t('programs.wrestling.features.3')
       ],
-      cta: "Start Wrestling",
+      cta: t('programs.wrestling.cta'),
       popular: false
     },
     {
       id: 3,
-      title: "KIDS COMBAT SPORTS",
+      title: t('programs.kids.title'),
       image: "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600&h=400&fit=crop",
-      age: "Ages 6-12",
-      description: "Safe introduction to martial arts focusing on discipline and fun",
-      price: "From 6,500₽/month",
+      age: t('programs.kids.age'),
+      description: t('programs.kids.desc'),
+      price: t('programs.kids.price'),
       features: [
-        "Age-appropriate techniques",
-        "Character development",
-        "Anti-bullying skills"
+        t('programs.kids.features.1'),
+        t('programs.kids.features.2'),
+        t('programs.kids.features.3')
       ],
-      cta: "Kids Classes",
+      cta: t('programs.kids.cta'),
       popular: true
     },
     {
       id: 4,
-      title: "ADULT FITNESS BOXING",
+      title: t('programs.adult.title'),
       image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
-      age: "Ages 18+",
-      description: "High-intensity boxing workouts for fitness and stress relief",
-      price: "From 7,500₽/month",
+      age: t('programs.adult.age'),
+      description: t('programs.adult.desc'),
+      price: t('programs.adult.price'),
       features: [
-        "Cardio conditioning",
-        "Technique training",
-        "Stress management"
+        t('programs.adult.features.1'),
+        t('programs.adult.features.2'),
+        t('programs.adult.features.3')
       ],
-      cta: "Adult Training",
+      cta: t('programs.adult.cta'),
       popular: false
     },
     {
       id: 5,
-      title: "COMPETITION PREP",
+      title: t('programs.competition.title'),
       image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=400&fit=crop",
-      age: "Advanced only",
-      description: "Elite training for competitive athletes and tournament preparation",
-      price: "From 15,000₽/month",
+      age: t('programs.competition.age'),
+      description: t('programs.competition.desc'),
+      price: t('programs.competition.price'),
       features: [
-        "1-on-1 coaching",
-        "Competition strategy",
-        "Mental preparation"
+        t('programs.competition.features.1'),
+        t('programs.competition.features.2'),
+        t('programs.competition.features.3')
       ],
-      cta: "Go Pro",
+      cta: t('programs.competition.cta'),
       popular: false
     },
     {
       id: 6,
-      title: "PERSONAL TRAINING",
+      title: t('programs.personal.title'),
       image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
-      age: "All ages",
-      description: "One-on-one sessions tailored to your specific goals and needs",
-      price: "From 3,500₽/session",
+      age: t('programs.personal.age'),
+      description: t('programs.personal.desc'),
+      price: t('programs.personal.price'),
       features: [
-        "Customized programs",
-        "Flexible scheduling",
-        "Faster progress"
+        t('programs.personal.features.1'),
+        t('programs.personal.features.2'),
+        t('programs.personal.features.3')
       ],
-      cta: "Book Session",
+      cta: t('programs.personal.cta'),
       popular: false
     }
   ];
@@ -101,10 +104,10 @@ const Programs = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            Training Programs
+            {t('programs.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Choose Your Path to Mastery
+            {t('programs.subtitle')}
           </p>
         </div>
 
@@ -120,7 +123,7 @@ const Programs = () => {
               {/* Popular Badge */}
               {program.popular && (
                 <div className="bg-primary text-white text-sm font-semibold px-4 py-2 text-center">
-                  MOST POPULAR
+                  САМОЕ ПОПУЛЯРНОЕ
                 </div>
               )}
 
@@ -186,10 +189,10 @@ const Programs = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-lg text-muted-foreground mb-6">
-            Not sure which program is right for you?
+            {t('programs.bottom.text')}
           </p>
           <Button className="bg-primary hover:bg-primary-hover text-white px-8 py-3 font-semibold shadow-red">
-            Schedule a Free Consultation
+            {t('programs.bottom.cta')}
           </Button>
         </div>
       </div>

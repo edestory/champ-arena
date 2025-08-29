@@ -1,44 +1,46 @@
 import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Facilities = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   const facilities = [
     {
       id: 1,
-      title: "BOXING RING",
+      title: t('facilities.boxing'),
       image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&h=600&fit=crop",
-      caption: "Official competition-size ring"
+      caption: t('facilities.boxing.caption')
     },
     {
       id: 2,
-      title: "WRESTLING MATS", 
+      title: t('facilities.wrestling'), 
       image: "https://images.unsplash.com/photo-1583473848882-f9a5c8b8c4b0?w=800&h=600&fit=crop",
-      caption: "High-quality competition mats"
+      caption: t('facilities.wrestling.caption')
     },
     {
       id: 3,
-      title: "CONDITIONING AREA",
+      title: t('facilities.conditioning'),
       image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop",
-      caption: "Modern fitness equipment"
+      caption: t('facilities.conditioning.caption')
     },
     {
       id: 4,
-      title: "LOCKER ROOMS",
+      title: t('facilities.locker'),
       image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&h=600&fit=crop",
-      caption: "Clean, spacious facilities"
+      caption: t('facilities.locker.caption')
     },
     {
       id: 5,
-      title: "RECOVERY ZONE", 
+      title: t('facilities.recovery'), 
       image: "https://images.unsplash.com/photo-1506629905607-d0fbdd4c4c10?w=800&h=600&fit=crop",
-      caption: "Stretching and recovery area"
+      caption: t('facilities.recovery.caption')
     },
     {
       id: 6,
-      title: "YOUTH TRAINING AREA",
+      title: t('facilities.youth'),
       image: "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&h=600&fit=crop",
-      caption: "Safe space for young athletes"
+      caption: t('facilities.youth.caption')
     }
   ];
 
@@ -48,10 +50,10 @@ const Facilities = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            Our Facilities
+            {t('facilities.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Train Like a Champion
+            {t('facilities.subtitle')}
           </p>
         </div>
 
@@ -98,32 +100,32 @@ const Facilities = () => {
             <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-xl">2.5K</span>
             </div>
-            <h4 className="font-semibold text-secondary mb-2">Training Space</h4>
-            <p className="text-sm text-muted-foreground">Square meters of professional facilities</p>
+            <h4 className="font-semibold text-secondary mb-2">Тренировочное пространство</h4>
+            <p className="text-sm text-muted-foreground">Квадратные метры профессиональных залов</p>
           </div>
 
           <div className="bg-accent rounded-xl p-6 text-center">
             <div className="w-12 h-12 bg-gradient-to-br from-primary-dark to-secondary rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-xl">24/7</span>
             </div>
-            <h4 className="font-semibold text-secondary mb-2">Access</h4>
-            <p className="text-sm text-muted-foreground">Member access to facilities</p>
+            <h4 className="font-semibold text-secondary mb-2">Доступ</h4>
+            <p className="text-sm text-muted-foreground">Членский доступ к залам</p>
           </div>
 
           <div className="bg-accent rounded-xl p-6 text-center">
             <div className="w-12 h-12 bg-gradient-to-br from-secondary to-primary rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-xl">Pro</span>
             </div>
-            <h4 className="font-semibold text-secondary mb-2">Equipment</h4>
-            <p className="text-sm text-muted-foreground">Professional grade training gear</p>
+            <h4 className="font-semibold text-secondary mb-2">Оборудование</h4>
+            <p className="text-sm text-muted-foreground">Профессиональное тренировочное снаряжение</p>
           </div>
 
           <div className="bg-accent rounded-xl p-6 text-center">
             <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-xl">Safe</span>
             </div>
-            <h4 className="font-semibold text-secondary mb-2">Environment</h4>
-            <p className="text-sm text-muted-foreground">Clean, secure, and monitored</p>
+            <h4 className="font-semibold text-secondary mb-2">Среда</h4>
+            <p className="text-sm text-muted-foreground">Чистая, безопасная и контролируемая</p>
           </div>
         </div>
       </div>

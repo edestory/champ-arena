@@ -1,33 +1,36 @@
 import { Award, Building2, TrendingUp, Calendar } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const WhyChooseUs = () => {
+  const { t } = useLanguage();
+
   const advantages = [
     {
       icon: Award,
-      title: "WORLD-CLASS COACHES",
-      statistic: "15+ Years Average Experience",
-      description: "Our coaches are former professional athletes and certified trainers with international competition experience.",
+      title: t('why.coaches.title'),
+      statistic: t('why.coaches.stat'),
+      description: t('why.coaches.desc'),
       color: "from-primary to-primary-dark"
     },
     {
       icon: Building2,
-      title: "MODERN FACILITIES",
-      statistic: "2,500 m² Training Space",
-      description: "Professional boxing ring, wrestling mats, modern equipment, and dedicated areas for different training types.",
+      title: t('why.facilities.title'),
+      statistic: t('why.facilities.stat'),
+      description: t('why.facilities.desc'),
       color: "from-primary-dark to-secondary"
     },
     {
       icon: TrendingUp,
-      title: "PROVEN METHODOLOGY",
-      statistic: "95% Goal Achievement Rate",
-      description: "Our structured training programs combine traditional techniques with modern sports science for optimal results.",
+      title: t('why.methodology.title'),
+      statistic: t('why.methodology.stat'),
+      description: t('why.methodology.desc'),
       color: "from-secondary to-primary"
     },
     {
       icon: Calendar,
-      title: "FLEXIBLE PROGRAMS",
-      statistic: "6 Days/Week Schedule",
-      description: "Morning, afternoon, and evening classes to fit your lifestyle. Weekend workshops and special events available.",
+      title: t('why.flexibility.title'),
+      statistic: t('why.flexibility.stat'),
+      description: t('why.flexibility.desc'),
       color: "from-primary to-primary-light"
     }
   ];
@@ -38,10 +41,10 @@ const WhyChooseUs = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            Why Choose EDESTORY?
+            {t('why.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            What Makes Us Different
+            {t('why.subtitle')}
           </p>
         </div>
 
@@ -83,19 +86,19 @@ const WhyChooseUs = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-primary mb-2">500+</div>
-              <div className="text-sm text-muted-foreground">Students Trained</div>
+              <div className="text-sm text-muted-foreground">Студентов обучено</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-primary mb-2">85%</div>
-              <div className="text-sm text-muted-foreground">Success Rate</div>
+              <div className="text-sm text-muted-foreground">Уровень успеха</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-primary mb-2">15</div>
-              <div className="text-sm text-muted-foreground">Champion Coaches</div>
+              <div className="text-sm text-muted-foreground">Тренеров-чемпионов</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-primary mb-2">8</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
+              <div className="text-sm text-muted-foreground">Лет опыта</div>
             </div>
           </div>
         </div>

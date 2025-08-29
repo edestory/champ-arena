@@ -1,7 +1,10 @@
 import { Phone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const CTASection = () => {
+  const { t } = useLanguage();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -27,10 +30,10 @@ const CTASection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Start Your Journey?
+            {t('cta.title')}
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Join hundreds of students who have transformed their lives through martial arts
+            {t('cta.subtitle')}
           </p>
         </div>
 
@@ -38,19 +41,19 @@ const CTASection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-white mb-2">500+</div>
-            <div className="text-white/80 font-medium">Students Trained</div>
+            <div className="text-white/80 font-medium">Студентов обучено</div>
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-white mb-2">85%</div>
-            <div className="text-white/80 font-medium">Success Rate</div>
+            <div className="text-white/80 font-medium">Уровень успеха</div>
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-white mb-2">15</div>
-            <div className="text-white/80 font-medium">Champion Coaches</div>
+            <div className="text-white/80 font-medium">Тренеров-чемпионов</div>
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-white mb-2">8</div>
-            <div className="text-white/80 font-medium">Years Experience</div>
+            <div className="text-white/80 font-medium">Лет опыта</div>
           </div>
         </div>
 
@@ -60,7 +63,7 @@ const CTASection = () => {
             onClick={() => scrollToSection('contact')}
             className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            BOOK FREE TRIAL
+            {t('cta.btn1')}
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
           
@@ -69,17 +72,17 @@ const CTASection = () => {
             variant="outline"
           >
             <Phone className="mr-2 w-5 h-5" />
-            CALL NOW: +7 (495) 123-45-67
+            {t('cta.btn2')}
           </Button>
         </div>
 
         {/* Additional Info */}
         <div className="mt-12 text-center">
           <p className="text-white/80 text-lg mb-4">
-            🥊 Free trial includes assessment, training session, and consultation
+            {t('cta.info')}
           </p>
           <p className="text-white/60">
-            No long-term commitment required • Cancel anytime • All skill levels welcome
+            {t('cta.note')}
           </p>
         </div>
       </div>

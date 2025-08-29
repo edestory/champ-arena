@@ -42,25 +42,25 @@ const Hero = () => {
     {
       icon: Users,
       number: "500+",
-      label: "Students Trained",
+      label: t('hero.stats.students'),
       color: "text-primary"
     },
     {
       icon: Trophy,
       number: "15",
-      label: "Professional Champions",
+      label: t('hero.stats.champions'),
       color: "text-primary-light"
     },
     {
       icon: Calendar,
       number: "8",
-      label: "Years of Excellence",
+      label: t('hero.stats.years'),
       color: "text-white"
     },
     {
       icon: Target,
       number: "2",
-      label: "Olympic Medalists on Staff",
+      label: t('hero.stats.medalists'),
       color: "text-primary-light"
     }
   ];
@@ -68,26 +68,26 @@ const Hero = () => {
   const quickInfoCards = [
     {
       icon: Trophy,
-      title: "Expert Trainers",
-      description: "World-class coaches with championship experience",
+      title: t('hero.cards.trainers.title'),
+      description: t('hero.cards.trainers.desc'),
       color: "from-primary to-primary-dark"
     },
     {
       icon: Zap,
-      title: "Modern Facilities",
-      description: "Professional ring, mats, and equipment",
+      title: t('hero.cards.facilities.title'),
+      description: t('hero.cards.facilities.desc'),
       color: "from-primary-dark to-secondary"
     },
     {
       icon: Calendar,
-      title: "Flexible Schedule",
-      description: "Morning, afternoon & evening classes available",
+      title: t('hero.cards.schedule.title'),
+      description: t('hero.cards.schedule.desc'),
       color: "from-secondary to-primary"
     },
     {
       icon: Target,
-      title: "Proven Results",
-      description: "95% of students achieve their fitness goals",
+      title: t('hero.cards.results.title'),
+      description: t('hero.cards.results.desc'),
       color: "from-primary to-primary-light"
     }
   ];
@@ -129,10 +129,12 @@ const Hero = () => {
             {/* Left Column - Main Content */}
             <div className="text-center lg:text-left">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in-up">
-                {slides[currentSlide].title.split(' ').slice(0, 2).join(' ')}
-                <span className="block text-primary-light">
-                  {slides[currentSlide].title.split(' ').slice(2).join(' ')}
-                </span>
+                {slides[currentSlide].title}
+                {slides[currentSlide].title2 && (
+                  <span className="block text-primary-light">
+                    {slides[currentSlide].title2}
+                  </span>
+                )}
               </h1>
               
               <h2 className="text-2xl md:text-3xl text-white/90 mb-4 animate-fade-in-up font-semibold" style={{animationDelay: '0.2s'}}>
