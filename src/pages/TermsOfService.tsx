@@ -1,19 +1,51 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const TermsOfService = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-background py-20">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            Условия предоставления услуг
-          </h1>
-          <p className="text-muted-foreground">
-            Последнее обновление: 29 января 2025 г.
-          </p>
-        </header>
+    <div className="min-h-screen bg-background">
+      <SEOHead
+        meta={{
+          title: 'Условия использования - EDESTORY Sports Academy',
+          description: 'Условия использования сайта и услуг спортивной академии EDESTORY. Правила и положения для клиентов.',
+          noindex: false
+        }}
+        breadcrumbs={[
+          { name: 'Главная', item: 'https://edestory.com/', position: 1 },
+          { name: 'Условия использования', item: 'https://edestory.com/terms-of-service', position: 2 }
+        ]}
+      />
+      <Header />
+      
+      <main className="pt-32 pb-16">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <Breadcrumbs />
+          
+          <div className="mb-8">
+            <Button asChild variant="outline" className="mb-6">
+              <Link to="/">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Вернуться на главную
+              </Link>
+            </Button>
+          </div>
+          
+          <header className="mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+              Условия предоставления услуг
+            </h1>
+            <p className="text-muted-foreground">
+              Последнее обновление: 29 января 2025 г.
+            </p>
+          </header>
 
         <div className="prose prose-lg max-w-none">
           <section className="mb-8">
@@ -100,7 +132,9 @@ const TermsOfService = () => {
             </div>
           </section>
         </div>
-      </div>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };

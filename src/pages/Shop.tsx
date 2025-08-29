@@ -6,6 +6,9 @@ import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import { generateProductSchema } from '@/lib/seo';
 
 const Shop = () => {
   const { category } = useParams();
@@ -158,11 +161,28 @@ const Shop = () => {
     // Shop homepage
     return (
       <div className="min-h-screen bg-background">
+        <SEOHead
+          meta={{
+            title: 'Магазин спортивной экипировки EDESTORY - Боксерское снаряжение',
+            description: 'Официальный магазин EDESTORY. Профессиональная экипировка для бокса, борьбы, одежда и аксессуары. Качественные товары от проверенных брендов.',
+            keywords: 'магазин спортивной экипировки, боксерские перчатки, борцовское трико, спортивная одежда, тренировочное снаряжение'
+          }}
+          og={{
+            title: 'Магазин EDESTORY - Спортивная экипировка',
+            description: 'Профессиональное снаряжение для боевых видов спорта',
+            type: 'website'
+          }}
+          breadcrumbs={[
+            { name: 'Главная', item: 'https://edestory.com/', position: 1 },
+            { name: 'Магазин', item: 'https://edestory.com/shop', position: 2 }
+          ]}
+        />
         <Header />
         
         {/* Hero Section */}
         <section className="pt-32 pb-20 bg-gradient-to-br from-primary/10 to-primary-dark/10">
           <div className="container mx-auto px-4">
+            <Breadcrumbs />
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-5xl md:text-6xl font-bold text-secondary mb-6">
@@ -364,13 +384,29 @@ const Shop = () => {
   }
 
   // Category page would be rendered here
+  const categoryConfig = categories.find(cat => cat.id === category);
+  const categoryTitle = categoryConfig?.title || category;
+  
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        meta={{
+          title: `${categoryTitle} - Магазин EDESTORY | Спортивная экипировка`,
+          description: `Большой выбор товаров категории ${categoryTitle.toLowerCase()}. Качественная спортивная экипировка для тренировок и соревнований.`,
+          keywords: `${categoryTitle.toLowerCase()}, спортивная экипировка, магазин EDESTORY`
+        }}
+        breadcrumbs={[
+          { name: 'Главная', item: 'https://edestory.com/', position: 1 },
+          { name: 'Магазин', item: 'https://edestory.com/shop', position: 2 },
+          { name: categoryTitle, item: `https://edestory.com/shop/${category}`, position: 3 }
+        ]}
+      />
       <Header />
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-4">
+          <Breadcrumbs />
           <h1 className="text-4xl font-bold text-secondary mb-8">
-            Категория: {category}
+            {categoryTitle}
           </h1>
           <p className="text-muted-foreground">Страница категории в разработке...</p>
         </div>
